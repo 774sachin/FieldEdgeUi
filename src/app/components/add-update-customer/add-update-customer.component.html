@@ -1,0 +1,152 @@
+<div class="custormer-main">
+  <h2 class="header">Checkbox configuration</h2>
+  <div class="container">
+    <form [formGroup]="customerForm" (submit)="submit()">
+      <div class="inline-form-fields">
+        <mat-form-field>
+          <mat-label>Enter your email</mat-label>
+          <input matInput inputmode="gmail" placeholder="Type name" formControlName="email" #emailInput>
+
+          <mat-error
+            *ngIf="customerForm.get('email')!.errors && (customerForm.get('email')!.dirty || customerForm.get('email')!.touched)">{{errors['email']}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Enter your password</mat-label>
+          <input matInput placeholder="" inputmode="password" formControlName="password" required>
+          <mat-error
+            *ngIf="customerForm.get('password')!.invalid && (customerForm.get('password')!.dirty || customerForm.get('password')!.touched)">{{errors['password']}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Enter your salutation</mat-label>
+          <input matInput inputmode="salutation" placeholder="Type salutation" formControlName="salutation"
+            #salutationInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Enter your firstname</mat-label>
+          <input matInput placeholder="" formControlName="firstname" required>
+          <mat-error
+            *ngIf="customerForm.get('firstname')!.invalid && (customerForm.get('firstname')!.dirty || customerForm.get('firstname')!.touched)">{{errors['firstname']}}</mat-error>
+        </mat-form-field>
+
+
+
+      </div>
+      <div class="inline-form-fields">
+        <mat-form-field>
+          <mat-label>Enter your lastname</mat-label>
+          <input matInput placeholder="" formControlName="lastname" required>
+          <mat-error
+            *ngIf="customerForm.get('lastname')!.invalid && (customerForm.get('lastname')!.dirty || customerForm.get('lastname')!.touched)">{{errors['lastname']}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Enter your initials</mat-label>
+          <input matInput placeholder="Type initials" inputmode="text" formControlName="initials" #initialsInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Enter your firstnameAscii</mat-label>
+          <input matInput placeholder="Type firstnameAscii" formControlName="firstnameAscii" #firstnameAsciiInput>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Enter your firstnameCountryRank</mat-label>
+          <input matInput placeholder="Type firstnameCountryRank" formControlName="firstnameCountryRank"
+            #firstnameCountryRankInput>
+        </mat-form-field>
+
+      </div>
+
+      <div class="inline-form-fields">
+        <mat-form-field>
+          <mat-label>Enter your firstnameCountryFrequency</mat-label>
+          <input matInput inputmode="firstnameCountryFrequency" placeholder="Type firstnameCountryFrequency"
+            formControlName="firstnameCountryFrequency" #firstnameCountryFrequencyInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Enter your lastnameAscii</mat-label>
+          <input matInput placeholder="Type lastnameAscii" inputmode="text" formControlName="lastnameAscii"
+            #lastnameAscii>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Enter your lastnameCountryRank</mat-label>
+          <input matInput placeholder="Type lastnameCountryRank" formControlName="lastnameCountryRank"
+            #lastnameCountryRankInput>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Enter your lastnameCountryFrequency</mat-label>
+          <input matInput placeholder="Type lastnameCountryFrequency" formControlName="lastnameCountryFrequency"
+            #lastnameCountryFrequencyInput>
+        </mat-form-field>
+
+      </div>
+
+      <div class="inline-form-fields">
+        <mat-form-field appearance="fill">
+          <mat-label>Select your countryCode</mat-label>
+          <mat-select placeholder="Select country code" formControlName="countryCode" #countryCodeInput>
+            <mat-option *ngFor="let country of countries" [value]="country.code"> {{country.name}} </mat-option>
+
+          </mat-select>
+
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Enter your countryCodeAlpha</mat-label>
+          <input matInput placeholder="Type countryCodeAlpha" inputmode="text" formControlName="countryCodeAlpha"
+            #countryCodeAlphaInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Enter your countryName</mat-label>
+          <input matInput placeholder="Type countryName" formControlName="countryName" #countryName>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Enter your primaryLanguageCode</mat-label>
+          <input matInput placeholder="Type primaryLanguageCode" formControlName="primaryLanguageCode"
+            #primaryLanguageCodeInput>
+        </mat-form-field>
+
+      </div>
+
+
+      <div class="inline-form-fields">
+        <mat-form-field>
+          <mat-label>Enter your primaryLanguage</mat-label>
+          <input matInput inputmode="primaryLanguage" placeholder="Type primaryLanguage"
+            formControlName="primaryLanguage" #primaryLanguageInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Enter your balance</mat-label>
+          <input matInput placeholder="Type balance" type="number" inputmode="number" formControlName="balance"
+            #balanceInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Enter your phoneNumber</mat-label>
+          <input matInput placeholder="Type phoneNumber" formControlName="phoneNumber" #phoneNumberInput>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Enter your currency</mat-label>
+          <input matInput placeholder="Type currency" formControlName="currency" #currencyInput>
+        </mat-form-field>
+
+      </div>
+
+      <div class="inline-form-fields">
+        <mat-form-field appearance="fill">
+          <mat-label>Select your gender</mat-label>
+          <mat-select placeholder="Select  gender" formControlName="gender" #genderInput>
+            <mat-option *ngFor="let gender of genders" [value]="gender.value"> {{gender.label}} </mat-option>
+
+          </mat-select>
+
+        </mat-form-field>
+
+      </div>
+      <mat-toolbar id="toolbar" color="primary">
+
+        <span style="flex: 1 1 auto;"></span>
+        <button mat-raised-button color="accent" style="float: right;">{{title}}</button>
+      </mat-toolbar>
+    </form>
+  </div>
+</div>

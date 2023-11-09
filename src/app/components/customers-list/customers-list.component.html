@@ -1,0 +1,78 @@
+<div class="custormer-main">
+
+    <mat-toolbar id="toolbarmain" color="gray" c>
+        <h2 class="header">Customer's</h2>
+        <span style="flex: 1 1 auto;"></span>
+        <button mat-raised-button color="accent" style="float: right;" (click)="recreateCustomers()">
+            <mat-icon aria-hidden="false" fontIcon="sync"></mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows>
+
+        <ng-container matColumnDef="Id">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="firstname">
+            <th mat-header-cell *matHeaderCellDef> Firstname </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.firstname}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="lastname">
+            <th mat-header-cell *matHeaderCellDef> LastNaem </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.lastname}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let customer"> <a href="mailto:{{customer.email}}">{{customer.email}} </a></td>
+        </ng-container>
+
+        <ng-container matColumnDef="PhoneNumber">
+            <th mat-header-cell *matHeaderCellDef> PhoneNumber </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.phoneNumber}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="CountryCode">
+            <th mat-header-cell *matHeaderCellDef> CountryCode </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.countryCode}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Gender">
+            <th mat-header-cell *matHeaderCellDef> Gender </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.salutation}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Balance">
+            <th mat-header-cell *matHeaderCellDef> Balance </th>
+            <td mat-cell *matCellDef="let customer">{{customer.balance}}- {{customer.currency}}</td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let customer">
+                <div class="button-row">
+                    <button mat-raised-button color="primary" (click)="editClick(customer)">Edit</button>
+                    <button mat-raised-button color="warn" (click)="openDialog('0ms', '0ms',customer)">Delete</button>
+                </div>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" [attr.colspan]="displayedColumns.length">
+                No data found.
+            </td>
+        </tr>
+    </table>
+    <mat-toolbar>
+        <mat-toolbar-row>
+            <mat-paginator #scheduledOrdersPaginator class="paginator"
+                [pageSizeOptions]="[10, 20, 60,100]"></mat-paginator>
+            <span style=" flex: 1 1 auto;"></span>
+
+            <button mat-raised-button color="primary" (click)="addClick()">Add</button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>
